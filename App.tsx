@@ -1,12 +1,12 @@
 import React from 'react';
 import * as eva from '@eva-design/eva';
+import Login from './src/screens/login/loginScreen';
+import Registration from './src/screens/registration/registrationScreen';
+import Dictionaries from './src/screens/dictionaries/dictionariesScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackProps } from './src/types/rootStackProps';
 import { ApplicationProvider, IconRegistry, Layout } from '@ui-kitten/components';
-import Login from './src/screens/login/loginScreen';
-import Registration from './src/screens/registration/registrationScreen';
-import Dictionaries from './src/screens/dictionaries/dictionariesScreen';
 import { View } from 'react-native';
 import { styles } from './App.styles';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
