@@ -20,7 +20,6 @@ const RegistrationScreen = ({ navigation }: NativeStackScreenProps<RootStackProp
     firebase.app.auth()
       .createUserWithEmailAndPassword(email, password)
       .then((response) => {
-        console.log(response);
         firebase.database().ref('/users/' + response.user.uid).set({ 'dictionaries': [], 'details': { 'username': fullName } });
         navigation.reset({
           index: 0,
