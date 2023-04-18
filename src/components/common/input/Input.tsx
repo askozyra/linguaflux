@@ -3,6 +3,7 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import * as Kitten from '@ui-kitten/components';
+import { CustomInputStyles } from './Input.styles';
 
 interface Props {
   required?: boolean;
@@ -10,13 +11,13 @@ interface Props {
   textValueChanged?: (value: string) => void;
 };
 
-const Input = (nativeInputProps: any, customProps: Props) => {
+const Input = (props: Kitten.InputProps & Props) => {
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const captionState = useState('');
   const textValue = useState('');
 
   useEffect(() => {
-    setSecureTextEntry(customProps.allowHideText ?? false);
+    setSecureTextEntry(props.allowHideText ?? false);
   }, [])
 
   const handleRequiredFieldEmpty = () => {
@@ -25,15 +26,15 @@ const Input = (nativeInputProps: any, customProps: Props) => {
 
   const handleChangeText = (value: string) => {
     textValue[1](value);
-    if (customProps.textValueChanged)
-      customProps.textValueChanged(value);
+    if (props.textValueChanged)
+      props.textValueChanged(value);
   }
 
   const toggleSecureTextEntry = () => {
     setSecureTextEntry(!secureTextEntry);
   }
 
-  const togglePasswordIcon = (props: React.ReactElement) => (
+  const togglePasswordIcon = (props: any) => (
     <TouchableWithoutFeedback onPress={toggleSecureTextEntry}>
       <Kitten.Icon
         {...props}
@@ -44,19 +45,15 @@ const Input = (nativeInputProps: any, customProps: Props) => {
 
   return (
     <Kitten.Input
-      {...nativeInputProps}
-      onBlur={customProps.required ? handleRequiredFieldEmpty : null}
+      {...props}
+      onBlur={props.required ? handleRequiredFieldEmpty : () => { }}
       caption={captionState[0]}
       status={captionState[0] ? 'danger' : 'basic'}
-      style={{
-        borderWidth: 0,
-        borderBottomWidth: 2,
-        backgroundColor: '#fff1'
-      }}
+      style={CustomInputStyles.Layout}
       value={textValue[0]}
-      onChangeText={handleChangeText}
-      label={customProps.required ? nativeInputProps.label + ' *' : nativeInputProps.label}
-      accessoryRight={customProps.allowHideText ? togglePasswordIcon : null}
+      onChangeText={value => handleChangeText(value)}
+      label={props.required ? props.label + ' *' : props.label}
+      accessoryRight={props.allowHideText ? togglePasswordIcon : (<></>)}
       secureTextEntry={secureTextEntry}
     />
   );

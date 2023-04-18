@@ -23,7 +23,6 @@ const LoginScreen = ({ navigation }: NativeStackScreenProps<RootStackProps, 'Log
     firebase.app.auth()
       .signInWithEmailAndPassword(email, password)
       .then((response) => {
-        console.log(response);
         navigation.reset({
           index: 0,
           routes: [{ name: 'Dictionaries' }],
