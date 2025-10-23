@@ -1,0 +1,6 @@
+@linguaflux.Server_HostAddress = http://localhost:5152
+
+GET {{linguaflux.Server_HostAddress}}/linguaflux/
+Accept: application/json
+
+###
