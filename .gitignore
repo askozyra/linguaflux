@@ -1,33 +1,3 @@
-# Backend (ASP.NET)
-bin/
-obj/
+# User profile
 *.user
-*.suo
-*.db
-*.log
-.env
 .vs
-
-# Frontend (React TS)
-node_modules/
-dist/
-dist-ssr/
-*.local
-
-# Frontend logs
-logs/
-npm-debug.log*
-yarn-debug.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-# Editor config files for frontend
-.vscode/
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?

@@ -1,0 +1,9 @@
+# Backend (ASP.NET)
+bin/
+obj/
+*.user
+*.suo
+*.db
+*.log
+.env
+.vs
