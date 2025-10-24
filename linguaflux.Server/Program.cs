@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace linguaflux.Server
 {
     public class Program
@@ -9,6 +11,8 @@ namespace linguaflux.Server
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddDbContext<DAL.AppDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
 

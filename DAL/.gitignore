@@ -1,0 +1,9 @@
+# DAL C#
+bin/
+obj/
+*.user
+*.suo
+*.db
+*.log
+.env
+.vs
